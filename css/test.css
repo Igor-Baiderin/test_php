@@ -1,0 +1,17 @@
+.test-width-all {
+    width: 100%;
+}
+.table-test-header{
+    background-color: #3398cc;
+    color: #fff;
+    text-align: center;
+}
+.table-test-url {
+    width: 165px;
+}
+.table-test-edit {
+    width: 50px;
+}
+.table-test-unpublish {
+    width: 100px;
+}
