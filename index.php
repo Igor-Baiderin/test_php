@@ -1,26 +1,7 @@
 <?php
-$directory = 'articles';
-$filesDraft = scandir($directory);
-$absDirectory = __DIR__ . DIRECTORY_SEPARATOR . $directory;
-$files = array_values(array_filter($filesDraft, function ($file) {
-    return strlen($file) > 3;
-}));
-$data = [];
-foreach ($files as $file)
-{
-    $item = file_get_contents($absDirectory.DIRECTORY_SEPARATOR.$file);
-    $regexp = "/(?<=---)[\s\S]+?(?=---)/ui";
-    $match = [];
-    preg_match($regexp, $item, $match);
-    $arr = explode(PHP_EOL, trim($match[0]));
-    $dataArr = [];
-    foreach ($arr as $value) {
-        $i = explode(':', $value);
-        $dataArr[trim($i[0])] = str_replace('"', '', trim($i[1]));;
-    }
-    $dataArr['file'] = $file;
-    $data[] = $dataArr;
-}
+require_once('DataFile.php');
+$dataArr = new DataFile();
+$data = $dataArr->getConfig();
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -83,24 +64,24 @@ foreach ($files as $file)
         <th>MODIFIED ON</th>
         <th class="table-test-unpublish"></th>
     </tr>
-    <?php foreach ($data as $key => $i):?>
-    <tr class="align-middle">
-        <td><?=$key?></td>
-        <td class="d-inline-block text-truncate table-test-url"><?=$i['file']?></td>
-        <td><?=$i['title']?></td>
-        <td class="table-test-edit"><a type="button" class="btn btn-success btn-sm" href="edit.php">EDIT</a></td>
-        <td>Published</td>
-        <td><?=$i['author']??''?></td>
-        <td><?=$i['category']?></td>
-        <td><?=$i['tool']?></td>
-        <td><?=$i['views']?></td>
-        <td><?=stristr($i['published_on'], ' ', true)?></td>
-        <td><?=stristr($i['modified_on'], ' ', true)?></td>
-        <td class="table-test-unpublish">
-            <button type="button" class="btn btn-light btn-sm">UNPUBLISH</button>
-        </td>
-    </tr>
-    <?php endforeach;?>
+    <?php foreach ($data as $key => $i): ?>
+        <tr class="align-middle">
+            <td><?= $key ?></td>
+            <td class="d-inline-block text-truncate table-test-url"><?= $i['file'] ?></td>
+            <td><?= $i['title'] ?></td>
+            <td class="table-test-edit"><a type="button" class="btn btn-success btn-sm" href="edit.php">EDIT</a></td>
+            <td>Published</td>
+            <td><?= $i['author'] ?? '' ?></td>
+            <td><?= $i['category'] ?></td>
+            <td><?= $i['tool'] ?></td>
+            <td><?= $i['views'] ?></td>
+            <td><?= stristr($i['published_on'], ' ', true) ?></td>
+            <td><?= stristr($i['modified_on'], ' ', true) ?></td>
+            <td class="table-test-unpublish">
+                <button type="button" class="btn btn-light btn-sm">UNPUBLISH</button>
+            </td>
+        </tr>
+    <?php endforeach; ?>
 </table>
 <script src="js/test.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
