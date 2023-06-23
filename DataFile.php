@@ -28,10 +28,8 @@ class DataFile
 
     private function getDataFile()
     {
-        foreach ($this->files as $file)
-        {
-            if (count($item = getDataFile($file)) > 0)
-            {
+        foreach ($this->files as $file) {
+            if (count($item = getDataFile($file)) > 0) {
                 $this->data += $item;
             }
         }
@@ -40,38 +38,36 @@ class DataFile
 
     public function getBlocks()
     {
-        $this->getDataFile();
-        foreach ()
-        $handle = fopen($this->absDirectory . DIRECTORY_SEPARATOR . $file, "r");
+//        $this->getDataFile();
+//        foreach ()
+//            $handle = fopen($this->absDirectory . DIRECTORY_SEPARATOR . $file, "r");
     }
-
-
-
-function getDataFile($file): array
-{
-    global $absDirectory;
-    $handle = fopen($absDirectory . DIRECTORY_SEPARATOR . $file, "r");
-    var_dump(getConfig($handle));
-    fclose($handle);
-    return [];
 }
 
-function getConfig($handle)
-{
-    $stringFile = getStringFile($handle);
-    if ($stringFile = '---') {
-        $data = getContent($handle);
-        return $data;
-    }
-    echo $stringFile;
-    return [];
-}
-
-function
-
-function getStringFile($handle)
-{
-    return fgets($handle);
-}
-
-}
+//
+//function getDataFile($file): array
+//{
+//    global $absDirectory;
+//    $handle = fopen($absDirectory . DIRECTORY_SEPARATOR . $file, "r");
+//    var_dump(getConfig($handle));
+//    fclose($handle);
+//    return [];
+//}
+//
+//function getConfig($handle)
+//{
+//    $stringFile = getStringFile($handle);
+//    if ($stringFile = '---') {
+//        $data = getContent($handle);
+//        return $data;
+//    }
+//    echo $stringFile;
+//    return [];
+//}
+//
+//function
+//
+//function getStringFile($handle)
+//{
+//    return fgets($handle);
+//}
