@@ -94,8 +94,8 @@ foreach ($files as $file)
         <td><?=$i['category']?></td>
         <td><?=$i['tool']?></td>
         <td><?=$i['views']?></td>
-        <td><?=$i['published_on']?></td>
-        <td><?=$i['modified_on']?></td>
+        <td><?=stristr($i['published_on'], ' ', true)?></td>
+        <td><?=stristr($i['modified_on'], ' ', true)?></td>
         <td class="table-test-unpublish">
             <button type="button" class="btn btn-light btn-sm">UNPUBLISH</button>
         </td>
