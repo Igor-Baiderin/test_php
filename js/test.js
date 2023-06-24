@@ -21,7 +21,7 @@ function createTable(filterTable) {
         if (filterTable[itemTable].author === undefined) {
             filterTable[itemTable].author = ''
         }
-        let item = '<tr class="align-middle">' +
+        let item = '<tr class="align-middle tableFilter">' +
             '<td>' + itemTable + '</td>' +
             '<td class="d-inline-block text-truncate table-test-url">' + filterTable[itemTable].file + '</td>' +
             '<td>' + filterTable[itemTable].title + '</td>' +
@@ -52,9 +52,9 @@ function setAutorAndTool() {
 
 function setAutor() {
     let el = document.getElementById('select-author')
-    let addHTML = ''
+    let addHTML = '<li><button class="dropdown-item" onclick="filterAuthor(false)">все</button></li>'
     for (let itemAuthor of dataAuthor) {
-        let item = '<li><a class="dropdown-item" href="#">'+itemAuthor+'</a></li>'
+        let item = '<li><button class="dropdown-item" onclick="filterAuthor(this.innerText)">' + itemAuthor + '</button></li>'
         addHTML = addHTML + item
     }
     el.outerHTML = addHTML;
@@ -62,12 +62,48 @@ function setAutor() {
 
 function setTool() {
     let el = document.getElementById('select-tool')
-    let addHTML = ''
+    let addHTML = '<li><button class="dropdown-item" onclick="filterTool(false)">все</button></li>'
     for (let itemTool of dataTool) {
-        let item = '<li><a class="dropdown-item" href="#">'+itemTool+'</a></li>'
+        let item = '<li><button class="dropdown-item" onclick="filterTool(this.innerText)">' + itemTool + '</button></li>'
         addHTML = addHTML + item
     }
     el.outerHTML = addHTML;
 }
 
+function filterTool(tool) {
+    if (tool === false) {
+        erasingAndDisplayingTable(filterTable)
+    } else {
+        erasingAndDisplayingTable(searchTool(tool))
+    }
+}
 
+function searchTool(tool) {
+    return filterTable.filter(elem => {
+        return elem.tool.includes(tool)
+    });
+}
+
+function filterAuthor(author) {
+    if (author === false) {
+        erasingAndDisplayingTable(filterTable)
+    } else {
+        erasingAndDisplayingTable(searchAuthor(author))
+    }
+}
+
+function searchAuthor(author) {
+    return filterTable.filter(elem => {
+        return elem.author.includes(author)
+    });
+}
+
+function erasingAndDisplayingTable(filterTable) {
+    let table = document.querySelectorAll('.tableFilter');
+    if (table.length > 1) {
+        for (let i = 1; i < table.length; i++) {
+            table[i].remove()
+        }
+    }
+    table[0].outerHTML = createTable(filterTable)
+}
