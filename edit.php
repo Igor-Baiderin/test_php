@@ -10,12 +10,12 @@
 <body class="container-fluid mt-3">
 <form name="article" method="post" action="controller.php?name=sss">
     <div>
-        <label for="exampleFormControlTextarea1" class="form-label">Edit Article</label>
+        <label for="exampleFormControlTextarea1" class="form-label"><h4>Edit Article</h4></label>
         <textarea name="content" class="form-control" id="exampleFormControlTextarea1" rows="30"></textarea>
     </div>
     <div class="mt-3">
-        <a type="button" class="btn btn-secondary" href="index.php">Вернуться без записи</a>
-        <button type="submit" class="btn btn-primary">Записать</button>
+        <a type="button" class="btn btn-secondary" href="index.php">Return without saving</a>
+        <button type="submit" class="btn btn-primary">Save</button>
     </div>
 </form>
 <script src="js/test.js"></script>
