@@ -107,3 +107,17 @@ function erasingAndDisplayingTable(filterTable) {
     }
     table[0].outerHTML = createTable(filterTable)
 }
+
+function filterContent(search) {
+    if (search === '') {
+        erasingAndDisplayingTable(filterTable)
+    } else {
+        erasingAndDisplayingTable(searchContent(search))
+    }
+}
+function searchContent(search) {
+    return  filterTable.filter(elem => {
+        return (elem.file.toLowerCase().includes(search.toLowerCase())
+            || (elem.title.toLowerCase().includes(search.toLowerCase())))
+    });
+}
