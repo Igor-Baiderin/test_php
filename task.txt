@@ -1,7 +1,0 @@
-Write a script that lists a folder with text files in Markdown markup and generates an article dashboard as a table, as shown on the screenshot 'table.png' (with filters and search). When you click on the 'Edit' button, it goes to a rich text editor for the article. Examples of article files with .md extension are attached.
-Time limit: no more than 5 hours (what's done is done). 
-Tech requirements: PHP7, ES6, the solution is to be presented as a Docker container.
-
-Напишите скрипт, который перечисляет папку с текстовыми файлами в разметке Markdown и формирует панель инструментов статьи в виде таблицы, как показано на скриншоте 'table.png' (с фильтрами и поиском). Когда вы нажимаете кнопку «Изменить», вы переходите к текстовому редактору для статьи. Примеры файлов статей с расширением .md прилагаются.
-Ограничение по времени: не более 5 часов (что сделано, то сделано).
-Технические требования: PHP7, ES6, решение должно быть представлено в виде Docker-контейнера.
