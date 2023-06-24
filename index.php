@@ -69,7 +69,7 @@ $data = $dataArr->getConfig();
             <td><?= $key ?></td>
             <td class="d-inline-block text-truncate table-test-url"><?= $i['file'] ?></td>
             <td><?= $i['title'] ?></td>
-            <td class="table-test-edit"><a type="button" class="btn btn-success btn-sm" href="edit.php">EDIT</a></td>
+            <td class="table-test-edit"><a type="button" class="btn btn-success btn-sm" href="\edit.php">EDIT</a></td>
             <td>Published</td>
             <td><?= $i['author'] ?? '' ?></td>
             <td><?= $i['category'] ?></td>
@@ -83,6 +83,7 @@ $data = $dataArr->getConfig();
         </tr>
     <?php endforeach; ?>
 </table>
+<div id="tableServer"></div>
 <script src="js/test.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
