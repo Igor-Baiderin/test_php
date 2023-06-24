@@ -1,7 +1,7 @@
 <?php
 require_once('DataFile.php');
 $dataArr = new DataFile();
-$data = $dataArr->getConfig();
-$answer['table'] = $data;
-$answer['elem'] = ['elem' => 'Еще элементик'];
+$answer['table'] = $dataArr->getConfig();
+$answer['tool'] = $dataArr->getTool();
+$answer['author'] = $dataArr->getAuthor();
 echo json_encode($answer);

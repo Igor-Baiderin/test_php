@@ -1,10 +1,13 @@
 <?php
+
 class DataFile
 {
     private array $filesDraft;
     private array $files;
     private array $data;
     private array $iniArray;
+    private array $toolArray;
+    private array $authorArray;
 
     public function __construct()
     {
@@ -42,6 +45,24 @@ class DataFile
     public function getConfig()
     {
         $this->getConfigFiles();
+        foreach ($this->data as $item) {
+            $this->toolArray[] = $item['tool'];
+        }
+        $this->toolArray = array_unique($this->toolArray);
+        foreach ($this->data as $item) {
+            if (isset($item['author']) && $item['author']) {
+                $this->authorArray[] = $item['author'];
+            }
+        }
+        $this->authorArray = array_unique($this->authorArray);
         return $this->data;
+    }
+    public function getAuthor()
+    {
+        return $this->authorArray;
+    }
+    public function getTool()
+    {
+        return $this->toolArray;
     }
 }

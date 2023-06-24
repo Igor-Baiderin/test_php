@@ -1,14 +1,18 @@
 var filterTable = [];
 var dataTable = [];
+var dataAuthor = [];
+var dataTool = [];
 let url = '../getTable.php';
 let response = fetch(url)
     .then(response => response.json())
     .then((data) => {
         Object.assign(dataTable, data.table)
         Object.assign(filterTable, data.table)
+        Object.assign(dataAuthor, data.author)
+        Object.assign(dataTool, data.tool)
         let el = document.getElementById('tableFilter')
         el.outerHTML = createTable(filterTable)
-        // console.log(data.elem)
+        setAutorAndTool()
     })
 
 function createTable(filterTable) {
@@ -21,7 +25,7 @@ function createTable(filterTable) {
             '<td>' + itemTable + '</td>' +
             '<td class="d-inline-block text-truncate table-test-url">' + filterTable[itemTable].file + '</td>' +
             '<td>' + filterTable[itemTable].title + '</td>' +
-            '<td class="table-test-edit"><a type="button" class="btn btn-success btn-sm" href="\edit.html?file='+filterTable[itemTable].file+'">EDIT</a></td>' +
+            '<td class="table-test-edit"><a type="button" class="btn btn-success btn-sm" href="\edit.html?file=' + filterTable[itemTable].file + '">EDIT</a></td>' +
             '<td>Published</td>' +
             '<td>' + filterTable[itemTable].author + '</td>' +
             '<td>' + filterTable[itemTable].category + '</td>' +
@@ -40,3 +44,30 @@ function createTable(filterTable) {
 function cutMyStrMin(str, char) {
     return str.replace(new RegExp(`(.*?${char}).*`), '$1')
 }
+
+function setAutorAndTool() {
+    setAutor()
+    setTool()
+}
+
+function setAutor() {
+    let el = document.getElementById('select-author')
+    let addHTML = ''
+    for (let itemAuthor of dataAuthor) {
+        let item = '<li><a class="dropdown-item" href="#">'+itemAuthor+'</a></li>'
+        addHTML = addHTML + item
+    }
+    el.outerHTML = addHTML;
+}
+
+function setTool() {
+    let el = document.getElementById('select-tool')
+    let addHTML = ''
+    for (let itemTool of dataTool) {
+        let item = '<li><a class="dropdown-item" href="#">'+itemTool+'</a></li>'
+        addHTML = addHTML + item
+    }
+    el.outerHTML = addHTML;
+}
+
+
