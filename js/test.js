@@ -21,7 +21,7 @@ function createTable(filterTable) {
             '<td>' + itemTable + '</td>' +
             '<td class="d-inline-block text-truncate table-test-url">' + filterTable[itemTable].file + '</td>' +
             '<td>' + filterTable[itemTable].title + '</td>' +
-            '<td class="table-test-edit"><a type="button" class="btn btn-success btn-sm" href="\edit.php">EDIT</a></td>' +
+            '<td class="table-test-edit"><a type="button" class="btn btn-success btn-sm" href="\edit.html?file='+filterTable[itemTable].file+'">EDIT</a></td>' +
             '<td>Published</td>' +
             '<td>' + filterTable[itemTable].author + '</td>' +
             '<td>' + filterTable[itemTable].category + '</td>' +
