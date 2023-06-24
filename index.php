@@ -1,8 +1,3 @@
-<?php
-require_once('DataFile.php');
-$dataArr = new DataFile();
-$data = $dataArr->getConfig();
-?>
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -64,24 +59,7 @@ $data = $dataArr->getConfig();
         <th>MODIFIED ON</th>
         <th class="table-test-unpublish"></th>
     </tr>
-    <?php foreach ($data as $key => $i): ?>
-        <tr class="align-middle">
-            <td><?= $key ?></td>
-            <td class="d-inline-block text-truncate table-test-url"><?= $i['file'] ?></td>
-            <td><?= $i['title'] ?></td>
-            <td class="table-test-edit"><a type="button" class="btn btn-success btn-sm" href="\edit.php">EDIT</a></td>
-            <td>Published</td>
-            <td><?= $i['author'] ?? '' ?></td>
-            <td><?= $i['category'] ?></td>
-            <td><?= $i['tool'] ?></td>
-            <td><?= $i['views'] ?></td>
-            <td><?= stristr($i['published_on'], ' ', true) ?></td>
-            <td><?= stristr($i['modified_on'], ' ', true) ?></td>
-            <td class="table-test-unpublish">
-                <button type="button" class="btn btn-light btn-sm">UNPUBLISH</button>
-            </td>
-        </tr>
-    <?php endforeach; ?>
+    <tr id="tableFilter"></tr>
 </table>
 <div id="tableServer"></div>
 <script src="js/test.js"></script>
