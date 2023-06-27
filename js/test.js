@@ -35,10 +35,15 @@ function createTable(filterTable) {
             '<td>' + cutMyStrMin(filterTable[itemTable].modified_on, ' ') + '</td>' +
             '<td class="table-test-unpublish">' +
             '<button type="button" class="btn btn-light btn-sm">UNPUBLISH</button>' +
-            '</td></tr>'
+            '</td>'+
+            '</tr>'
         addHTML = addHTML + item
     }
     return addHTML
+}
+
+function addTD() {
+    return null
 }
 
 function cutMyStrMin(str, char) {
@@ -105,7 +110,11 @@ function erasingAndDisplayingTable(filterTable) {
             table[i].remove()
         }
     }
-    table[0].outerHTML = createTable(filterTable)
+        let insertTable = createTable(filterTable);
+        if (insertTable === '') {
+            insertTable = '<tr class="tableFilter"></tr>'
+        }
+        table[0].outerHTML = insertTable;
 }
 
 function filterContent(search) {
@@ -115,8 +124,9 @@ function filterContent(search) {
         erasingAndDisplayingTable(searchContent(search))
     }
 }
+
 function searchContent(search) {
-    return  filterTable.filter(elem => {
+    return filterTable.filter(elem => {
         return (elem.file.toLowerCase().includes(search.toLowerCase())
             || (elem.title.toLowerCase().includes(search.toLowerCase())))
     });
