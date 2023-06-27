@@ -2,7 +2,6 @@
 
 class DataFile
 {
-    private array $filesDraft;
     private array $files;
     private array $data;
     private array $iniArray;
@@ -17,11 +16,11 @@ class DataFile
     private function getDataFiles()
     {
         $this->iniArray = parse_ini_file("test.ini");
-        $this->filesDraft = scandir($this->iniArray['directory']);
+        $this->files = scandir($this->iniArray['directory']);
         $this->absDirectory = __DIR__ . DIRECTORY_SEPARATOR . $this->iniArray['directory'];
-        $this->files = array_values(array_filter($this->filesDraft, function ($file) {
-            return strlen($file) > 3;
-        }));
+        $this->files = array_filter($this->files, function($item){
+            return strripos($item, '.md');
+        });
     }
 
     private function getConfigFiles()
