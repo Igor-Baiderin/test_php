@@ -8,6 +8,7 @@ let response = fetch(url)
     .then((data) => {
         Object.assign(dataTable, data.table)
         Object.assign(filterTable, data.table)
+        filterTable.reverse()
         Object.assign(dataAuthor, data.author)
         Object.assign(dataTool, data.tool)
         let el = document.getElementById('tableFilter')
@@ -22,7 +23,7 @@ function createTable(filterTable) {
             filterTable[itemTable].author = ''
         }
         let item = '<tr class="align-middle tableFilter">' +
-            '<td>' + itemTable + '</td>' +
+            '<td>' + (filterTable.length - Number(itemTable)) + '</td>' +
             '<td class="d-inline-block text-truncate table-test-url">' + filterTable[itemTable].file + '</td>' +
             '<td>' + filterTable[itemTable].title + '</td>' +
             '<td class="table-test-edit"><a type="button" class="btn btn-success btn-sm" href="\edit.html?file=' + filterTable[itemTable].file + '">EDIT</a></td>' +
