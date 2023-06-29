@@ -44,7 +44,7 @@ function createTable(filterTable) {
 }
 
 function getDateFromString(dateTime) {
-    let objectDate =new Date(dateTime);
+    let objectDate = new Date(dateTime);
     let day = objectDate.getDate();
     let month = objectDate.getMonth();
     let year = objectDate.getFullYear();
