@@ -44,10 +44,10 @@ function createTable(filterTable) {
 function getDateFromString(dateTime) {
     let objectDate = new Date(dateTime);
     let day = objectDate.getDate();
-    let month = objectDate.getMonth();
+    let month = objectDate.getMonth() + 1;
     let year = objectDate.getFullYear();
-    if (day < 10) day = '0' + day
-    if (month < 10) month = `0${month}`
+    day = day < 10 ? day = '0' + day : day
+    month = month < 10 ? month = `0${month}` : month
     return `${year}-${month}-${day}`;
 }
 
