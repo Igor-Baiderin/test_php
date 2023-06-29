@@ -33,7 +33,7 @@ class DataFile
             $arr = explode(PHP_EOL, trim($match[0]));
             $dataArr = [];
             foreach ($arr as $value) {
-                $i = explode(':', $value);
+                $i = explode(': ', $value);
                 $dataArr[trim($i[0])] = str_replace('"', '', trim($i[1]));;
             }
             $dataArr['file'] = $file;

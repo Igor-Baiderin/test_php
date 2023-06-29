@@ -32,23 +32,25 @@ function createTable(filterTable) {
             '<td>' + filterTable[itemTable].category + '</td>' +
             '<td>' + filterTable[itemTable].tool + '</td>' +
             '<td>' + filterTable[itemTable].views + '</td>' +
-            '<td>' + cutMyStrMin(filterTable[itemTable].published_on, ' ') + '</td>' +
-            '<td>' + cutMyStrMin(filterTable[itemTable].modified_on, ' ') + '</td>' +
+            '<td>' + getDateFromString(filterTable[itemTable].published_on) + '</td>' +
+            '<td>' + getDateFromString(filterTable[itemTable].modified_on) + '</td>' +
             '<td class="table-test-unpublish">' +
             '<button type="button" class="btn btn-light btn-sm">UNPUBLISH</button>' +
-            '</td>'+
+            '</td>' +
             '</tr>'
         addHTML = addHTML + item
     }
     return addHTML
 }
 
-function addTD() {
-    return null
-}
-
-function cutMyStrMin(str, char) {
-    return str.replace(new RegExp(`(.*?${char}).*`), '$1')
+function getDateFromString(dateTime) {
+    let objectDate =new Date(dateTime);
+    let day = objectDate.getDate();
+    let month = objectDate.getMonth();
+    let year = objectDate.getFullYear();
+    if (day < 10) day = '0' + day
+    if (month < 10) month = `0${month}`
+    return `${day}-${month}-${year}`;
 }
 
 function setAutorAndTool() {
@@ -111,11 +113,11 @@ function erasingAndDisplayingTable(filterTable) {
             table[i].remove()
         }
     }
-        let insertTable = createTable(filterTable);
-        if (insertTable === '') {
-            insertTable = '<tr class="tableFilter"></tr>'
-        }
-        table[0].outerHTML = insertTable;
+    let insertTable = createTable(filterTable);
+    if (insertTable === '') {
+        insertTable = '<tr class="tableFilter"></tr>'
+    }
+    table[0].outerHTML = insertTable;
 }
 
 function filterContent(search) {
