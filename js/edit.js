@@ -1,5 +1,5 @@
 const fileMD = window.location.search.slice(6);
-let url = `../getArticle.php?file=${fileMD}`;
+let url = `../articleApi.php?file=${fileMD}`;
 let response = fetch(url)
     .then(response => response.json())
     .then((data) => {

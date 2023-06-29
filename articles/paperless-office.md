@@ -6,6 +6,7 @@ category: "article"
 meta_description: "Eco awareness has gained tremendous popularity and practical use. If you want to know how to go paperless and help the environment, read this article. "
 relevant_keywords: "eco friendly, printing, paper, scan, digital"
 views: "5"
+author: "fantomas"
 comment: ""
 featured: "0"
 keywords: ["!paperless 6900 68","!paperless office 400 37","!go paperless 700 49","how to go paperless 200 42","paperless workspace 5"]
