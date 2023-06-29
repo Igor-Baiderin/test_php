@@ -1,12 +1,10 @@
 var filterTable = [];
-var dataTable = [];
 var dataAuthor = [];
 var dataTool = [];
 let url = '../getTable.php';
 let response = fetch(url)
     .then(response => response.json())
     .then((data) => {
-        Object.assign(dataTable, data.table)
         Object.assign(filterTable, data.table)
         filterTable.reverse()
         Object.assign(dataAuthor, data.author)
