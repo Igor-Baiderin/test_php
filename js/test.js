@@ -23,7 +23,7 @@ function createTable(filterTable) {
             filterTable[itemTable].author = ''
         }
         let item = '<tr class="align-middle tableFilter">' +
-            '<td>' + (filterTable.length - Number(itemTable)) + '</td>' +
+            '<td>' + filterTable[itemTable].id + '</td>' +
             '<td class="d-inline-block text-truncate table-test-url">' + filterTable[itemTable].file + '</td>' +
             '<td>' + filterTable[itemTable].title + '</td>' +
             '<td class="table-test-edit"><a type="button" class="btn btn-success btn-sm" href="\edit.html?file=' + filterTable[itemTable].file + '">EDIT</a></td>' +

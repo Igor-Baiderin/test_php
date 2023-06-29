@@ -24,5 +24,4 @@ function saveFile()
         header('Location:' . 'index.html');
         exit;
     }
-
 }

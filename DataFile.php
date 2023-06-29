@@ -18,14 +18,14 @@ class DataFile
         $this->iniArray = parse_ini_file("test.ini");
         $this->files = scandir($this->iniArray['directory']);
         $this->absDirectory = __DIR__ . DIRECTORY_SEPARATOR . $this->iniArray['directory'];
-        $this->files = array_filter($this->files, function($item){
+        $this->files = array_values(array_filter($this->files, function ($item) {
             return strripos($item, '.md');
-        });
+        }));
     }
 
     private function getConfigFiles()
     {
-        foreach ($this->files as $file) {
+        foreach ($this->files as $key => $file) {
             $item = file_get_contents($this->absDirectory . DIRECTORY_SEPARATOR . $file);
             $regexp = "/(?<=---)[\s\S]+?(?=---)/ui";
             $match = [];
@@ -37,6 +37,7 @@ class DataFile
                 $dataArr[trim($i[0])] = str_replace('"', '', trim($i[1]));;
             }
             $dataArr['file'] = $file;
+            $dataArr['id'] = $key + 1;
             $this->data[] = $dataArr;
         }
     }
@@ -56,10 +57,12 @@ class DataFile
         $this->authorArray = array_unique($this->authorArray);
         return $this->data;
     }
+
     public function getAuthor()
     {
         return $this->authorArray;
     }
+
     public function getTool()
     {
         return $this->toolArray;
