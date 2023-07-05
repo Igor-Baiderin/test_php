@@ -30,6 +30,7 @@ class DataFile
             $regexp = "/(?<=---)[\s\S]+?(?=---)/ui";
             $match = [];
             preg_match($regexp, $item, $match);
+//            $dataArr = yaml_parse(trim($match[0]));   //  синтаксическая ошибка
             $arr = explode(PHP_EOL, trim($match[0]));
             $dataArr = [];
             foreach ($arr as $value) {
