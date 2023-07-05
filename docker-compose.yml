@@ -1,7 +1,6 @@
 version: '3'
 services:
   php:
-#    image: php:7.4-fpm
     build:
       context: ./docker/php74
     volumes:
