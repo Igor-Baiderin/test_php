@@ -26,7 +26,15 @@ class DataFile
     private function getConfigFiles()
     {
         foreach ($this->files as $key => $file) {
+
             $item = file_get_contents($this->absDirectory . DIRECTORY_SEPARATOR . $file);
+//            Получение контента, если есть необходимость
+//            $chars = preg_split('/---/', $item, -1, PREG_SPLIT_OFFSET_CAPTURE);
+//            if (isset($chars[2][0]) && strlen($chars[2][0]) > 0) {
+//                echo '<pre>';
+//                print_r($chars[2][0]);
+//            }
+
             $regexp = "/(?<=---)[\s\S]+?(?=---)/ui";
             $match = [];
             preg_match($regexp, $item, $match);
